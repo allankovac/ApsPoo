@@ -5,9 +5,11 @@
  */
 package virtualkeybord;
 
-import java.awt.Color;
+import java.awt.AWTException;
 import java.awt.event.KeyEvent;
-
+import java.awt.Robot;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Keyboard extends javax.swing.JFrame {
 
@@ -72,7 +74,7 @@ public class Keyboard extends javax.swing.JFrame {
         btnInterrogacao = new javax.swing.JButton();
         btnShift = new javax.swing.JButton();
         btnBackspace = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        paragramaLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -90,7 +92,7 @@ public class Keyboard extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -572,7 +574,8 @@ public class Keyboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        paragramaLabel.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        paragramaLabel.setText("Digite Enter para começar.  =D");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -684,14 +687,14 @@ public class Keyboard extends javax.swing.JFrame {
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(491, 491, 491))))
+                        .addComponent(paragramaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(267, 267, 267))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(paragramaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -757,380 +760,248 @@ public class Keyboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    int i=0;
+    int nivelMaximo = 5;
+    int nivel=1;
+    boolean flag = false;
+    
     private void btnQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQActionPerformed
 
     }//GEN-LAST:event_btnQActionPerformed
-
+    
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-            
+        pangrama pangrama = new pangrama();
+        if(nivel > nivelMaximo){
+            nivel = 1;
+        }
+        
+        pangrama.setNivel(nivel);
+        
+        paragramaLabel.setText(pangrama.pangrams_nivel());
+        jTextField1.setText("");
     }//GEN-LAST:event_jTextField1ActionPerformed
     
+    private void brilhaTeclado(int evt, int red_back, int green_back, int blue_back, int red_Font, int green_Font, int blue_Font){
+        switch(evt){
+            case KeyEvent.VK_Q:
+                btnQ.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnQ.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_W:
+                btnW.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnW.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_E:
+                btnE.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnE.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_R:
+                btnR.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnR.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_T:
+                btnT.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnT.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_Y:
+                btnY.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnY.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_U:
+                btnU.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnU.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_I:
+                btnI.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnI.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_O:
+                btnO.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnO.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_P:
+                btnP.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnP.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_A:
+                btnA.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnA.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_S:
+                btnS.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnS.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_D:
+                btnD.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnD.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_F:
+                btnF.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnF.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_G:
+                btnG.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnG.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_H:
+                btnH.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnH.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_J:
+                btnJ.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnJ.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_K:
+                btnK.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnK.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_L:
+                btnL.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnL.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_Z:
+                btnZ.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnZ.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_X:
+                btnX.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnX.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_C:
+                btnC.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnC.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_V:
+                btnV.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnV.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_B:
+                btnB.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnB.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_N:
+                btnN.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnN.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_M:
+                btnM.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnM.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_SPACE:
+                btnSpace.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnSpace.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_SHIFT:
+                btnShift.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnShift.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_ENTER:
+                btnEnter.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnEnter.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_BACK_SPACE:
+                btnBackspace.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnBackspace.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_COMMA:
+                btnVirgula.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnVirgula.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_PERIOD:
+                btnPonto.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnPonto.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_UNDEFINED:
+                btnCedilha.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnCedilha.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_1:
+                btnUm.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnUm.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_2:
+                btnDois.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnDois.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_3:
+                btnTres.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnTres.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_4:
+                btnQuatro.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnQuatro.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_5:
+                btnCinco.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnCinco.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_6:
+                btnSeis.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnSeis.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_7:
+                btnSete.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnSete.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_8:
+                btnOito.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnOito.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_9:
+                btnNove.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnNove.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+            case KeyEvent.VK_0:
+                btnZero.setBackground(new java.awt.Color(red_back,green_back,blue_back));
+                btnZero.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
+                break;
+        }
+        
+    }
+    
+    private void textoDigitadoCerto() throws AWTException{
+        char[] pangrama = paragramaLabel.getText().toCharArray();
+        int tamanho = pangrama.length;
+        char[] usuario = jTextField1.getText().toCharArray();
+        if(i<=tamanho){
+            if(usuario[i] == pangrama[i]){
+                System.out.print(i);
+                System.out.print(usuario[i]);
+                i ++;
+                jTextField1.setBackground(new java.awt.Color(240,240,240));
+                if(i == tamanho){
+                    nivel ++;
+                    i = 0;
+                    Robot robot = new Robot();
+                    robot.keyPress(10);
+                    robot.keyRelease(10);
+                }
+            }else{
+                jTextField1.setBackground(new java.awt.Color(255,102,102));
+            }
+        }
+    }
+    
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        int red_back = 255;
-        int green_back = 25;
-        int blue_back = 32;
-        int red_Font = 240;
-        int green_Font = 240;
-        int blue_Font = 240;
-        
-        switch(evt.getKeyCode()){
-            case KeyEvent.VK_Q:
-                btnQ.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnQ.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_W:
-                btnW.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnW.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_E:
-                btnE.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnE.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_R:
-                btnR.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnR.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_T:
-                btnT.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnT.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_Y:
-                btnY.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnY.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_U:
-                btnU.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnU.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_I:
-                btnI.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnI.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_O:
-                btnO.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnO.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_P:
-                btnP.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnP.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_A:
-                btnA.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnA.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_S:
-                btnS.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnS.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_D:
-                btnD.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnD.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_F:
-                btnF.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnF.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_G:
-                btnG.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnG.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_H:
-                btnH.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnH.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_J:
-                btnJ.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnJ.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_K:
-                btnK.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnK.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_L:
-                btnL.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnL.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_Z:
-                btnZ.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnZ.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_X:
-                btnX.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnX.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_C:
-                btnC.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnC.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_V:
-                btnV.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnV.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_B:
-                btnB.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnB.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_N:
-                btnN.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnN.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_M:
-                btnM.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnM.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_SPACE:
-                btnSpace.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnSpace.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_SHIFT:
-                btnShift.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnShift.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_ENTER:
-                btnEnter.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnEnter.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_BACK_SPACE:
-                btnBackspace.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnBackspace.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_COMMA:
-                btnVirgula.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnVirgula.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_PERIOD:
-                btnPonto.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnPonto.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_UNDEFINED:
-                btnCedilha.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnCedilha.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_1:
-                btnUm.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnUm.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_2:
-                btnDois.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnDois.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_3:
-                btnTres.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnTres.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_4:
-                btnQuatro.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnQuatro.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_5:
-                btnCinco.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnCinco.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_6:
-                btnSeis.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnSeis.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_7:
-                btnSete.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnSete.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_8:
-                btnOito.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnOito.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_9:
-                btnNove.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnNove.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_0:
-                btnZero.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnZero.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-        }    
+        this.brilhaTeclado(evt.getKeyCode(), 255, 25, 32, 240, 240, 240); 
+        if(evt.getKeyCode() != KeyEvent.VK_ENTER){
+            try {
+                this.textoDigitadoCerto();
+            } catch (AWTException ex) {
+                Logger.getLogger(Keyboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jTextField1KeyPressed
-
+    
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        int red_back = 240;
-        int green_back = 240;
-        int blue_back = 240;
-        int red_Font = 0;
-        int green_Font = 0;
-        int blue_Font = 0;
-        
-        switch(evt.getKeyCode()){
-            case KeyEvent.VK_Q:
-                btnQ.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnQ.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_W:
-                btnW.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnW.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_E:
-                btnE.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnE.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_R:
-                btnR.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnR.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_T:
-                btnT.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnT.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_Y:
-                btnY.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnY.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_U:
-                btnU.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnU.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_I:
-                btnI.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnI.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_O:
-                btnO.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnO.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_P:
-                btnP.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnP.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_A:
-                btnA.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnA.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_S:
-                btnS.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnS.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_D:
-                btnD.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnD.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_F:
-                btnF.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnF.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_G:
-                btnG.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnG.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_H:
-                btnH.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnH.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_J:
-                btnJ.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnJ.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_K:
-                btnK.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnK.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_L:
-                btnL.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnL.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_Z:
-                btnZ.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnZ.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_X:
-                btnX.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnX.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_C:
-                btnC.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnC.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_V:
-                btnV.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnV.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_B:
-                btnB.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnB.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_N:
-                btnN.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnN.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_M:
-                btnM.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnM.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_SPACE:
-                btnSpace.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnSpace.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_SHIFT:
-                btnShift.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnShift.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_ENTER:
-                btnEnter.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnEnter.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_BACK_SPACE:
-                btnBackspace.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnBackspace.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_COMMA:
-                btnVirgula.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnVirgula.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_PERIOD:
-                btnPonto.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnPonto.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_UNDEFINED:
-                btnCedilha.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnCedilha.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_1:
-                btnUm.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnUm.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_2:
-                btnDois.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnDois.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_3:
-                btnTres.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnTres.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_4:
-                btnQuatro.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnQuatro.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_5:
-                btnCinco.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnCinco.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_6:
-                btnSeis.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnSeis.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_7:
-                btnSete.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnSete.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_8:
-                btnOito.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnOito.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_9:
-                btnNove.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnNove.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-            case KeyEvent.VK_0:
-                btnZero.setBackground(new java.awt.Color(red_back,green_back,blue_back));
-                btnZero.setForeground(new java.awt.Color(red_Font,green_Font,blue_Font));
-                break;
-        }  
+        this.brilhaTeclado(evt.getKeyCode(), 240, 240, 240, 0, 0, 0);
+        if(evt.getKeyCode() != KeyEvent.VK_ENTER){
+            try {
+                this.textoDigitadoCerto();
+            } catch (AWTException ex) {
+                Logger.getLogger(Keyboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jTextField1KeyReleased
 
     private void btnWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWActionPerformed
@@ -1332,6 +1203,7 @@ public class Keyboard extends javax.swing.JFrame {
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Keyboard().setVisible(true);
             }
@@ -1385,8 +1257,8 @@ public class Keyboard extends javax.swing.JFrame {
     private javax.swing.JButton btnY;
     private javax.swing.JButton btnZ;
     private javax.swing.JButton btnZero;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel paragramaLabel;
     // End of variables declaration//GEN-END:variables
 
 }
